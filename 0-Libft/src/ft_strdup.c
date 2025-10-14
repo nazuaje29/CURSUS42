@@ -6,17 +6,16 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 20:28:33 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/13 20:39:53 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/14 21:01:50 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
 	char	*dup;
-	size_t	i;
 	size_t	s_len;
 
 	s_len = ft_strlen(s);

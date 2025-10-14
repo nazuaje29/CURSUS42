@@ -19,7 +19,7 @@ int main(void)
     printf("ft_isprint('\\n'): %d\n", ft_isprint('\n'));
 
     // ft_strlen
-    printf("ft_strlen(\"Hello\"): %zu\n", ft_strlen("Hello"));
+    printf("ft_strlen(\"-TEST-AB\"): %zu\n", ft_strlen("-TEST-AB"));
 
     // ft_memset y ft_bzero
     char buffer[10];
@@ -79,6 +79,18 @@ int main(void)
 
     // ft_atoi
     printf("ft_atoi(\"  -1234abc\"): %d\n", ft_atoi("  -1234abc"));
+
+    // ft_strjoin
+    char *joined = ft_strjoin("1234","5678");
+	printf("ft_strjoin(\"1234\", \"5678\"): %s\n", joined);
+	free(joined);
+
+    // ft_strtrim
+    char *trim = ft_strtrim("AB-TEST-AB","AB");
+	printf("ft_strtrim(\"AB-TEST-AB\", \"AB\"): %s\n", trim);
+	free(trim);
+
+	//valgrind --leak-check=full -s ./main
 
     return 0;
 }
