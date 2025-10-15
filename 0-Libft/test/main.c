@@ -1,6 +1,27 @@
 #include "libft.h"
 #include <stdio.h>
 
+static	size_t	ft_count_words(char const *s, char c)
+{
+	size_t	i;
+	size_t	words;
+
+	i = 0;
+	words = 0;/*
+	if (s[i] == c)
+		i++;
+	else
+		words++;*/
+	while(s[i])
+	{
+		while(s[i])
+        if (s[i] == c)
+			words++;
+		i++;
+	}
+	return (words);
+}
+
 int main(void)
 {
     // ft_isalpha y ft_isdigit y ft_isalnum
@@ -80,6 +101,22 @@ int main(void)
     // ft_atoi
     printf("ft_atoi(\"  -1234abc\"): %d\n", ft_atoi("  -1234abc"));
 
+    // ft_calloc
+    int *arr = (int *)ft_calloc(5, sizeof(int));
+    for (int i = 0; i < 5; i++)
+        printf("ft_calloc arr[%d]: %d\n", i, arr[i]);
+    free(arr);
+
+    // ft_strdup
+    char *dup = ft_strdup("Duplicate me!");
+    printf("ft_strdup (Duplicate me!): %s\n", dup);
+    free(dup);
+
+    // ft_substr
+    char *sub = ft_substr("Hello World", 6, 5);
+    printf("ft_substr (Hello World, 6, 5) %s\n", sub);
+    free(sub);
+
     // ft_strjoin
     char *joined = ft_strjoin("1234","5678");
 	printf("ft_strjoin(\"1234\", \"5678\"): %s\n", joined);
@@ -91,6 +128,10 @@ int main(void)
 	free(trim);
 
 	//valgrind --leak-check=full -s ./main
+
+    // ft_count_words
+    size_t words = ft_count_words(",hola,mundo,42", ',');
+    printf("ft_count_words: %ld\n", words);
 
     return 0;
 }
