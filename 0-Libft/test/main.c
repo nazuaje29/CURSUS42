@@ -120,6 +120,11 @@ int main(void)
     }
     free(array);
  
+    //ft_itoa
+    int n_itoa = -12345;
+    char *s_itoa = ft_itoa(n_itoa);
+    printf("ft_itoa(%d): %s\n", n_itoa, s_itoa);
+    free(s_itoa);
 
 	//valgrind --leak-check=full -s ./main
 

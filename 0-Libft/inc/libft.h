@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:46:28 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/15 22:04:09 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/18 10:05:53 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 /* Conversions*/
 int	ft_atoi(char *str);
+char	*ft_itoa(int n);
 
 /* Char Management*/
 int ft_isalpha(int c);
