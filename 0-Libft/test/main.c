@@ -1,6 +1,21 @@
 #include "libft.h"
 #include <stdio.h>
 
+static char ft_change_char(unsigned int i, char c)
+{
+    if (i % 2 == 0)
+        return (' ');
+    else
+        return (c);        
+}
+
+void    ft_change_str(unsigned int i, char *str)
+{
+	if (i == 0 || !str)
+        return;
+    *str = *(str - 1);
+}
+
 int main(void)
 {
     // ft_isalpha y ft_isdigit y ft_isalnum
@@ -125,6 +140,18 @@ int main(void)
     char *s_itoa = ft_itoa(n_itoa);
     printf("ft_itoa(%d): %s\n", n_itoa, s_itoa);
     free(s_itoa);
+
+    //ft_strmapi
+    char *s_strmapi = "abcdefghijklmn";
+    char *r_strmapi = ft_strmapi(s_strmapi, ft_change_char);
+    printf("ft_strmapi(%s): %s\n", s_strmapi, r_strmapi);
+    free(r_strmapi);
+
+    // ft_striteri
+    char *s_striteri[15] = "abcdefghijklmn";
+    printf("ft_striteri(%s):", s_striteri);
+    ft_striteri(s_striteri, ft_change_str);
+    printf(" %s\n", s_striteri);
 
 	//valgrind --leak-check=full -s ./main
 

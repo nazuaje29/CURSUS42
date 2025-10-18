@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:46:28 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/18 10:05:53 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/18 13:37:31 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ char	*ft_strdup(const char *s); /* Devuelve un puntero a una nueva string que es
 char	*ft_strjoin(char const *s1, char const *s2); /* Devuelve una nueva string que es la concatenación de las strings s1 y s2. La memoria para la nueva string se reserva con malloc y debe ser liberada con free cuando ya no se necesite. Si no se puede reservar memoria, devuelve NULL. Si s1 o s2 son NULL, se tratan como strings vacías. */
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 
 /* Memory Management*/
