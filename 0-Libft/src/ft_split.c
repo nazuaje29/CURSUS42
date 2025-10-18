@@ -12,12 +12,6 @@
 
 #include "libft.h"
 #include <stdlib.h>
-/*1. Contar cuántas subcadenas se generarán (cuántos separadores hay)
-2. Reservar un arreglo de punteros char* para esas subcadenas + 1 para NULL
-3. Recorrer la cadena y extraer cada subcadena entre separadores
-4. Copiar subcadenas en memoria nueva y asignarlas al arreglo
-5. Terminar arreglo con NULL
-6. Retornar el arreglo*/
 
 static	size_t	ft_count_words(char const *s, char c)
 {
