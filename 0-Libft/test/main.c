@@ -1,27 +1,6 @@
 #include "libft.h"
 #include <stdio.h>
 
-static	size_t	ft_count_words(char const *s, char c)
-{
-	size_t	i;
-	size_t	words;
-
-	i = 0;
-	words = 0;/*
-	if (s[i] == c)
-		i++;
-	else
-		words++;*/
-	while(s[i])
-	{
-		while(s[i])
-        if (s[i] == c)
-			words++;
-		i++;
-	}
-	return (words);
-}
-
 int main(void)
 {
     // ft_isalpha y ft_isdigit y ft_isalnum
@@ -73,10 +52,12 @@ int main(void)
     printf("ft_tolower('Z'): %c\n", ft_tolower('Z'));
 
     // ft_strchr y ft_strrchr
-    char *pos = ft_strchr("Hello World", 'o');
+    char *s = "Hello World";
+    char c = 'o';
+    char *pos = ft_strchr(s, c);
     if (pos)
         printf("ft_strchr: %s\n", pos);
-    pos = ft_strrchr("Hello World", 'o');
+    pos = ft_strrchr(s, c);
     if (pos)
         printf("ft_strrchr: %s\n", pos);
 
@@ -127,11 +108,20 @@ int main(void)
 	printf("ft_strtrim(\"AB-TEST-AB\", \"AB\"): %s\n", trim);
 	free(trim);
 
-	//valgrind --leak-check=full -s ./main
+    // ft_split
+    char *string = "Hola,Mundo,42";
+    char **array = ft_split(string, ',');
+    size_t i = 0;
+    while (array[i])
+    {
+        printf("ft_split array[%ld]: %s\n", i, array[i]);        
+        free(array[i]);
+        i++;
+    }
+    free(array);
+ 
 
-    // ft_count_words
-    size_t words = ft_count_words(",hola,mundo,42", ',');
-    printf("ft_count_words: %ld\n", words);
+	//valgrind --leak-check=full -s ./main
 
     return 0;
 }
