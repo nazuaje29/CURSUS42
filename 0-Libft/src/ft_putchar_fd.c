@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 08:43:05 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/19 09:12:02 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 15:22:35 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
+	if (fd < 0)
+		return ;
 	write(fd, &c, 1);
 }

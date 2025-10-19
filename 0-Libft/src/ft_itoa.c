@@ -6,23 +6,20 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 09:35:04 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/18 10:30:35 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 13:21:34 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static void	ft_fill_string(char *s, int is_neg, size_t len_nbr, int n)
+static void	ft_fill_string(char *s, int is_neg, size_t len_nbr, unsigned int n)
 {
 	size_t	i;
 
-	i = 0;
-	if (is_neg == 1)
-	{
-		s[0] = '-';
-	}
 	i = len_nbr - 1;
+	if (is_neg == 1)
+		s[0] = '-';
 	while (n > 0)
 	{
 		s[i] = n % 10 + '0';
@@ -32,31 +29,62 @@ static void	ft_fill_string(char *s, int is_neg, size_t len_nbr, int n)
 	s[len_nbr] = '\0';
 }
 
-char	*ft_itoa(int n)
+static char	*ft_check_input(int n)
 {
 	char	*s;
+
+	if (n == INT_MIN)
+	{
+		s = malloc((12) * sizeof(char));
+		ft_strlcpy(s, "-2147483648", 12);
+		return (s);
+	}
+	if (n == 0)
+	{
+		s = malloc(2 * sizeof(char));
+		ft_strlcpy(s, "0", 2);
+		return (s);
+	}
+	return (NULL);
+}
+
+size_t	ft_len_nbr(unsigned int n)
+{
 	size_t	len_nbr;
-	int		is_neg;
-	int		nbr;
+
+	len_nbr = 0;
+	while (n > 0)
+	{
+		n = n / 10;
+		len_nbr++;
+	}
+	return (len_nbr);
+}
+
+char	*ft_itoa(int n)
+{
+	char			*s;
+	char			*special_case;
+	size_t			len_nbr;
+	int				is_neg;
+	unsigned int	nbr;
 
 	len_nbr = 0;
 	is_neg = 0;
-	nbr = n;
+	nbr = (unsigned int)(n);
+	special_case = ft_check_input(n);
+	if (special_case)
+		return (special_case);
 	if (n < 0)
 	{
-		n = -n;
-		nbr = -nbr;
-		len_nbr++;
 		is_neg = 1;
-	}
-	while (nbr > 0)
-	{
-		nbr = nbr / 10;
 		len_nbr++;
+		nbr = (unsigned int)(-n);
 	}
+	len_nbr = len_nbr + ft_len_nbr(nbr);
 	s = malloc((len_nbr + 1) * sizeof(char));
 	if (!s)
 		return (NULL);
-	ft_fill_string(s, is_neg, len_nbr, n);
+	ft_fill_string(s, is_neg, len_nbr, nbr);
 	return (s);
 }

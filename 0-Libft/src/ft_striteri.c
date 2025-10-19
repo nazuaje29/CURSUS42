@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 13:36:22 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/19 09:11:55 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 15:23:26 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	size_t	len_s;
 
 	i = 0;
+	if (!s && !f)
+		return ;
 	len_s = ft_strlen(s);
 	while (i < len_s)
 	{

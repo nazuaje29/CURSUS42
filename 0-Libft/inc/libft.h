@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:46:28 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/19 09:24:13 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 10:31:53 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@
 
 # define TRUE 1
 # define FALSE 0
-# define BUFFER_SIZE 1024
+# define ERROR 0
+# define SUCCESS 1
+# define INT_MAX 2147483647
+# define INT_MIN (-2147483648)
 
 /*      FUNCTIONS   */
 

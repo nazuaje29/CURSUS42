@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 10:15:41 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/12 10:16:44 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 11:26:10 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	ft_memset(s, 48, n);
 }

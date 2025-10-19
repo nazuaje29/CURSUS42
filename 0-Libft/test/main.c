@@ -35,13 +35,14 @@ int main(void)
     printf("ft_isprint('\\n'): %d\n", ft_isprint('\n'));
 
     // ft_strlen
-    printf("ft_strlen(\"-TEST-AB\"): %zu\n", ft_strlen("-TEST-AB"));
+    char *s_len = "Aqui hay 16 char";
+    printf("ft_strlen(\"%s\"): %zu\n", s_len, ft_strlen(s_len));
 
     // ft_memset y ft_bzero
     char buffer[10];
-    ft_memset(buffer, 'x', 9);
+    ft_memset(buffer, 42, 9);
     buffer[9] = '\0';
-    printf("ft_memset: %s\n", buffer);
+    printf("ft_memset (*********): %s\n", buffer);
     ft_bzero(buffer, 9);
     buffer[9] = '\0';
     printf("ft_bzero: %s\n", buffer);
@@ -53,7 +54,7 @@ int main(void)
     printf("ft_memcpy: %s\n", dest);
 
     char overlap[20] = "overlaptest12345";
-    ft_memmove(overlap + 5, overlap, 10);
+    ft_memmove(overlap + 5, overlap, 0);
     printf("ft_memmove: %s\n", overlap);
 
     // ft_strlcpy y ft_strlcat
@@ -82,9 +83,8 @@ int main(void)
     printf("ft_strncmp(\"abc\", \"abc\", 3): %d\n", ft_strncmp("abc", "abc", 3));
 
     // ft_memchr
-    char *mem_pos = ft_memchr("abcde", 'c', 5);
-    if (mem_pos)
-        printf("ft_memchr: %c\n", *mem_pos);
+    char *mem_pos = ft_memchr("abcde", 'c', 7);
+    printf("ft_memchr (abcde,c,5): %s\n", mem_pos);
 
     // ft_memcmp
     printf("ft_memcmp(\"abc\", \"abd\", 3): %d\n", ft_memcmp("abc", "abd", 3));
@@ -97,6 +97,10 @@ int main(void)
 
     // ft_atoi
     printf("ft_atoi(\"  -1234abc\"): %d\n", ft_atoi("  -1234abc"));
+    char *ptr_atoi = NULL;
+    printf("ft_atoi(\"NULL \"): %d\n", ft_atoi(ptr_atoi));
+    printf("ft_atoi(\"-21474836489\"): %d\n", ft_atoi("-21474836489"));
+
 
     // ft_calloc
     int *arr = (int *)ft_calloc(5, sizeof(int));
@@ -108,10 +112,16 @@ int main(void)
     char *dup = ft_strdup("Duplicate me!");
     printf("ft_strdup (Duplicate me!): %s\n", dup);
     free(dup);
+    char *dup2 = ft_strdup("");
+    printf("ft_strdup (Duplicate me!): %s\n", dup2);
+    free(dup2);
+    char *dup3 = ft_strdup(NULL);
+    printf("ft_strdup (Duplicate me!): %s\n", dup3);
+    free(dup3);
 
     // ft_substr
     char *sub = ft_substr("Hello World", 6, 5);
-    printf("ft_substr (Hello World, 6, 5) %s\n", sub);
+    printf("ft_substr (Hello World, 6, 5) : %s\n", sub);
     free(sub);
 
     // ft_strjoin
@@ -120,8 +130,15 @@ int main(void)
 	free(joined);
 
     // ft_strtrim
-    char *trim = ft_strtrim("AB-TEST-AB","AB");
-	printf("ft_strtrim(\"AB-TEST-AB\", \"AB\"): %s\n", trim);
+    char *s_trim = "AB-AB";
+    char *set_trim = "";
+    char *trim = ft_strtrim(s_trim,set_trim);
+	ft_putstr_fd("ft_strtrim ",1);
+    ft_putstr_fd(s_trim,1);
+    ft_putchar_fd('/',1);
+    ft_putstr_fd(set_trim,1);
+    ft_putstr_fd(": ",1);
+    ft_putendl_fd(trim,1);
 	free(trim);
 
     // ft_split
@@ -137,10 +154,20 @@ int main(void)
     free(array);
  
     //ft_itoa
-    int n_itoa = -12345;
+    long n_itoa = INT_MIN;//-2147483649;
     char *s_itoa = ft_itoa(n_itoa);
-    printf("ft_itoa(%d): %s\n", n_itoa, s_itoa);
+    printf("ft_itoa(%ld): %s\n", n_itoa, s_itoa);
     free(s_itoa);
+    int n_itoa2 = -1;
+    char *s_itoa2 = ft_itoa(n_itoa2);
+    printf("ft_itoa(%d): %s\n", n_itoa2, s_itoa2);
+    free(s_itoa2);
+    long n_itoa3 = INT_MAX;// 2147483648;
+    char *s_itoa3 = ft_itoa(n_itoa3);
+    printf("ft_itoa(%ld): %s\n", n_itoa3, s_itoa3);
+    free(s_itoa3);
+
+
 
     //ft_strmapi
     char *s_strmapi = "abcdefghijklmn";
@@ -149,24 +176,24 @@ int main(void)
     free(r_strmapi);
 
     // ft_striteri
-    char s_striteri[15] = "abcdefghijklmn";
+    char s_striteri[5] = "abcd";
     printf("ft_striteri(%s):", s_striteri);
     ft_striteri(s_striteri, ft_change_str);
     printf(" %s\n", s_striteri);
 
     //ft_putchar_fd & ft_putstr_fd
     char c_fd = 'H';
-    ft_putstr_fd("ft_putchar_fd & ft_putstr_fd: ",1);
+    ft_putstr_fd("ft_putstr_fd & ft_putchar_fd:",1);
     ft_putchar_fd(c_fd,1);
     ft_putchar_fd('\n',1);
 
     //ft_putendl_fd
     char *s_fd = "Hola";
-    ft_putstr_fd("ft_putchar_fd & ft_putstr_fd: ",1);
+    ft_putstr_fd("ft_putendl_fd: ",1);
     ft_putendl_fd(s_fd,1);
 
     //ft_putnbr_fd
-    int n_fd = -12345;
+    int n_fd = -1;
     ft_putstr_fd("ft_putnbr_fd: ",1);
     ft_putnbr_fd(n_fd,1);
     ft_putchar_fd('\n',1);

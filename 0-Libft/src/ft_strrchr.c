@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 12:50:36 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/12 13:31:01 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 15:26:01 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strrchr(const char *s, int c)
 	const char	*last;
 
 	last = NULL;
+	if (!s)
+		return (NULL);
 	while (*s)
 	{
 		if (*s == (char)c)
