@@ -6,12 +6,11 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 09:35:04 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/19 13:21:34 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:45:09 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 static void	ft_fill_string(char *s, int is_neg, size_t len_nbr, unsigned int n)
 {

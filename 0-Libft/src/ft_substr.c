@@ -6,12 +6,12 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 19:39:27 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/19 16:22:35 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 16:48:20 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
+
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
