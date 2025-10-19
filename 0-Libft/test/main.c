@@ -11,9 +11,10 @@ static char ft_change_char(unsigned int i, char c)
 
 void    ft_change_str(unsigned int i, char *str)
 {
-	if (i == 0 || !str)
+    (void)i;
+    if (!str || !*str)
         return;
-    *str = *(str - 1);
+    *str = '0';
 }
 
 int main(void)
@@ -148,10 +149,27 @@ int main(void)
     free(r_strmapi);
 
     // ft_striteri
-    char *s_striteri[15] = "abcdefghijklmn";
+    char s_striteri[15] = "abcdefghijklmn";
     printf("ft_striteri(%s):", s_striteri);
     ft_striteri(s_striteri, ft_change_str);
     printf(" %s\n", s_striteri);
+
+    //ft_putchar_fd & ft_putstr_fd
+    char c_fd = 'H';
+    ft_putstr_fd("ft_putchar_fd & ft_putstr_fd: ",1);
+    ft_putchar_fd(c_fd,1);
+    ft_putchar_fd('\n',1);
+
+    //ft_putendl_fd
+    char *s_fd = "Hola";
+    ft_putstr_fd("ft_putchar_fd & ft_putstr_fd: ",1);
+    ft_putendl_fd(s_fd,1);
+
+    //ft_putnbr_fd
+    int n_fd = -12345;
+    ft_putstr_fd("ft_putnbr_fd: ",1);
+    ft_putnbr_fd(n_fd,1);
+    ft_putchar_fd('\n',1);
 
 	//valgrind --leak-check=full -s ./main
 

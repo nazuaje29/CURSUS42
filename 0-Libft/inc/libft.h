@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:46:28 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/18 13:37:31 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/19 09:24:13 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,11 @@ void	*ft_memchr(const void *s, int c, size_t n); /* Busca la primera ocurrencia 
 int		ft_memcmp(const void *s1, const void *s2, size_t n); /* Compara los primeros n bytes de las zonas de memoria s1 y s2. Devuelve un valor negativo, cero o positivo si s1 es menor, igual o mayor que s2 respectivamente.*/
 void	*ft_calloc(size_t nmemb, size_t size); /* Reserva memoria para un array de nmemb elementos de size bytes cada uno e inicializa toda la memoria a cero. Devuelve un puntero a la memoria reservada o NULL si no se puede reservar la memoria. Si nmemb o size es 0, devuelve un puntero a una zona de memoria válida que no debe ser utilizada.*/
 
-
+/* File Descriptor Management*/
+void	ft_putchar_fd(char c, int fd);
+void	ft_putstr_fd(char *s, int fd);
+void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 
 #endif
