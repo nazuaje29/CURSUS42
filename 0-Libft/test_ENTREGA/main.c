@@ -1,5 +1,7 @@
 #include "libft.h"
 #include <stdio.h>
+#include <limits.h>
+#include <string.h>
 
 static char ft_change_char(unsigned int i, char c)
 {
@@ -86,6 +88,28 @@ int main(void)
     pos = ft_strrchr(s, c);
     if (pos)
         printf("ft_strrchr: %s\n", pos);
+    printf("ft_strchr (teste,\\0): %s\n", ft_strchr("teste",'\0'));
+    printf("ft_strchr std(teste,\\0): %s\n", strchr("teste",'\0'));
+    printf("ft_strrchr (teste,\\0): %s\n", ft_strrchr("teste",'\0'));
+    printf("ft_strrchr std(teste,\\0): %s\n", strrchr("teste",'\0'));
+
+    const char *sch = "teste";
+    char *p1 = ft_strchr(sch, '\0');
+    char *p2 = ft_strrchr(sch, '\0');
+    char *p3 = strchr(sch, '\0');
+    char *p4 = strrchr(sch, '\0');
+
+    printf("La dirección de memoria apuntada por p1 (ft_strchr) es: %p\n", (void *)p1);
+    printf("La dirección de memoria apuntada por p2 (ft_strrchr) es: %p\n", (void *)p2);
+    printf("La dirección de memoria apuntada por p3 (strchr) es: %p\n", (void *)p3);
+    printf("La dirección de memoria apuntada por p4 (strrchr) es: %p\n", (void *)p4);
+    // También puedes verificar que ambos punteros son iguales
+    if (p1 == p2)
+        printf("Ambos punteros son iguales.\n");
+    else
+        printf("Los punteros son diferentes.\n");
+
+
 
     // ft_strncmp
     printf("ft_strncmp(\"abc\", \"abd\", 2): %d\n", ft_strncmp("abc", "abd", 2));
@@ -105,23 +129,27 @@ int main(void)
         printf("ft_strnstr: %s\n", substr);
 
     // ft_atoi
-    printf("ft_atoi(\"  1234abc\"): %d\n", ft_atoi("  1234abc"));
+    printf("ft_atoi(\"INT MAX\"): %d\n", ft_atoi("2147483648"));
     char *ptr_atoi = NULL;
     printf("ft_atoi(\"NULL\"): %d\n", ft_atoi(ptr_atoi));
-    printf("ft_atoi(\"2147483647\"): %d\n", ft_atoi("2147483647"));
+    printf("ft_atoi(\"INT_MIN\"): %d\n", ft_atoi("-2147483648"));
     printf("ft_atoi(\"546:5\"): %d\n", ft_atoi("546:5"));
     printf("ft_atoi(\"\\e475\"): %d\n", ft_atoi("\e475"));
-    printf("ft_atoi(\"\\t\\n\\r\\v\\f  469 \\n\"): %d\n", ft_atoi("\t\n\r\v\f  469 \n"));
+    printf("ft_atoi(\"+\\t\\v\\f\\r\\n \\f1234\"): %d\n", ft_atoi("+\t\v\f\r\n \f1234"));
+    printf("ft_atoi(\"+\\t\\v\\f\\r\\n \\f1234\")2: %d\n", atoi("+\t\v\f\r\n \f1234"));
     printf("ft_atoi(\"\\t\\n\\r\\v\\fd469 \\n\"): %d\n", ft_atoi("\t\n\r\v\fd69 \n"));
     printf("ft_atoi(\"-+45\"): %d\n", ft_atoi("-+45"));
     printf("ft_atoi(\"-45\"): %d\n", ft_atoi("-45"));
     printf("ft_atoi(\"+45\"): %d\n", ft_atoi("+45"));
+    printf("ft_atoi(\"void*0\"): %d\n", ft_atoi(((void*)0)));
 
     // ft_calloc
     int *arr = (int *)ft_calloc(5, sizeof(int));
     for (int i = 0; i < 5; i++)
         printf("ft_calloc arr[%d]: %d\n", i, arr[i]);
     free(arr);
+
+
 
     // ft_strdup
     char *dup = ft_strdup("Duplicate me!");

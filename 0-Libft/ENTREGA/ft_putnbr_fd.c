@@ -6,11 +6,12 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 09:22:14 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/19 16:47:18 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/21 21:50:20 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 void	ft_putnbr_fd(int n, int fd)
 {

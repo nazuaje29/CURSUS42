@@ -6,20 +6,21 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 15:30:10 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/21 17:25:32 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/21 22:40:29 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 static int	ft_get_number(const char *str, int sign)
 {
-	int		result;
+	long	result;
 	char	*s;
 
 	result = 0;
 	s = (char *)str;
-	while (*str >= '0' && *str <= '9')
+	while (*s >= '0' && *s <= '9')
 	{
 		if (sign == 1)
 		{
@@ -31,32 +32,28 @@ static int	ft_get_number(const char *str, int sign)
 			if (result <= INT_MIN / 10)
 				return (INT_MIN);
 		}
-		result = (result * 10) + *str - '0';
-		str++;
+		result = (result * 10) + *s - '0';
+		s++;
 	}
-	return (result);
+	return ((int)result * sign);
 }
 
 int	ft_atoi(const char *str)
 {
-	int		result;
 	int		sign;
 	char	*s;
 
-	result = 0;
 	sign = 1;
 	s = (char *)str;
-	if (!str)
+	if (!s)
 		return (0);
 	while ((*s >= 9 && *s <= 13) || *s == 32)
 		s++;
-	if (*s == '-')
+	if (*s == '-' || *s == '+')
 	{
-		sign = -sign;
+		if (*s == '-')
+			sign = -sign;
 		s++;
 	}
-	else if (*s == '+')
-		s++;
-	result = ft_get_number(s, sign);
-	return (result * sign);
+	return (ft_get_number(s, sign));
 }

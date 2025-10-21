@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/04 16:46:28 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/21 17:14:47 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/21 23:28:09 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,13 @@
 /* DEFINES */
 # define TRUE 1
 # define FALSE 0
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
 
 /* STRUCTURES */
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}	t_list;
+}					t_list;
 
 /* FUNCTIONS */
 /* Conversions*/
