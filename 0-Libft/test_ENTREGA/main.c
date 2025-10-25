@@ -4,6 +4,12 @@
 #include <limits.h>
 #include <string.h>
 
+void ft_freecontent(void *content)
+{
+    if (content)   
+        free(content);    
+}
+
 int main(void)
 {
     t_list  *lst = NULL;
@@ -32,21 +38,16 @@ int main(void)
     node2 = ft_lstnew(n2);
     node3 = ft_lstnew(n3);
     ft_lstadd_front(&lst, node1);
-    ft_lstadd_front(&lst, node2);
+    ft_lstadd_front(&lst, node3);
     printf("Lista con node 1 y 3 al inicio: ");
     tmp = lst;
     while (tmp)
     {
-        printf("%i \n", *(int *)tmp->content);
+        printf("%i ", *(int *)tmp->content);
         tmp = tmp->next;
     }
-    printf("3\n");
-    printf("3\n");
-    //printf("Contenido ultimo nodo de la lista: ");
-    //last = ft_lstlast(lst);
-    //printf(" %i\n", *(int *)last->content);
-    printf("Lista con node 2 al final: ");
-    ft_lstadd_back(&lst, node3);
+    printf("\nLista con node 2 al final: ");
+    ft_lstadd_back(&lst, node2);
     tmp = lst;
     while (tmp)
     {
@@ -58,6 +59,8 @@ int main(void)
     last = ft_lstlast(lst);
     printf("Tamaño de la lista: %i\n", size);
     printf("Contenido ultimo nodo de la lista: %i\n", *(int *)last->content);
+
+  
 
     return (0);
 }

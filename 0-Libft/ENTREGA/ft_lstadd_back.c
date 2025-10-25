@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/22 21:05:37 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/24 20:19:55 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/25 15:02:52 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void    ft_lstadd_back(t_list **lst, t_list *new)
 
     if (!lst || !new)
         return ;
+    new->next = NULL;
+    if (*lst == NULL)
+        *lst = new;
     last = ft_lstlast(*lst);
     last->next = new;
-    new->next = NULL;
+
 }

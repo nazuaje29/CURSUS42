@@ -12,7 +12,8 @@ ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c ft_tolower.c ft_
 
 OBJS = $(SRCS:.c=.o)
 
-SRCS_BON = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c
+SRCS_BON = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
+ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
 OBJS_BON = $(SRCS_BON:.c=.o) 
 
@@ -22,7 +23,7 @@ $(NAME): $(OBJS)
 	ar rcs $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $+ -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: all $(OBJS_BON)
 	ar rcs $(NAME) $(OBJS_BON)
@@ -35,5 +36,5 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re bonus
 
