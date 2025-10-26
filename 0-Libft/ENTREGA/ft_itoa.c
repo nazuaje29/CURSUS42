@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 09:35:04 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/21 21:49:51 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:49:56 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ static char	*ft_check_input(int n)
 	if (n == INT_MIN)
 	{
 		s = malloc((12) * sizeof(char));
+		if (!s)
+			return (NULL);
 		ft_strlcpy(s, "-2147483648", 12);
 		return (s);
 	}
 	if (n == 0)
 	{
 		s = malloc(2 * sizeof(char));
+		if (!s)
+			return (NULL);
 		ft_strlcpy(s, "0", 2);
 		return (s);
 	}
@@ -61,6 +65,17 @@ size_t	ft_len_nbr(unsigned int n)
 	return (len_nbr);
 }
 
+static void	ft_check_negative(int *is_neg, size_t *len_nbr, int n, unsigned \
+	int *nbr)
+{
+	if (n < 0)
+	{
+		*is_neg = 1;
+		*len_nbr = *len_nbr + 1;
+		*nbr = (unsigned int)(-n);
+	}
+}
+
 char	*ft_itoa(int n)
 {
 	char			*s;
@@ -72,15 +87,14 @@ char	*ft_itoa(int n)
 	len_nbr = 0;
 	is_neg = 0;
 	nbr = (unsigned int)(n);
-	special_case = ft_check_input(n);
-	if (special_case)
-		return (special_case);
-	if (n < 0)
+	if (n == 0 || n == INT_MIN)
 	{
-		is_neg = 1;
-		len_nbr++;
-		nbr = (unsigned int)(-n);
+		special_case = ft_check_input(n);
+		if (!special_case)
+			return (NULL);
+		return (special_case);
 	}
+	ft_check_negative(&is_neg, &len_nbr, n, &nbr);
 	len_nbr = len_nbr + ft_len_nbr(nbr);
 	s = malloc((len_nbr + 1) * sizeof(char));
 	if (!s)

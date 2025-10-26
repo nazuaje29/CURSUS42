@@ -32,6 +32,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f main_bonus.o
 
 re: fclean all
 

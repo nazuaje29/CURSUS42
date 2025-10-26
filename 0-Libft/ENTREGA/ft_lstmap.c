@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:15:25 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/26 13:37:19 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/26 18:01:16 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,11 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	while (lst)
 	{
 		new_content = ft_new_content(lst, new_lst, f, del);
+		if (!new_content)
+			return (NULL);
 		new_node = ft_new_node(new_content, new_lst, del);
+		if (!new_node)
+			return (NULL);
 		ft_lstadd_back(&new_lst, new_node);
 		lst = lst->next;
 	}
