@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/11 15:30:10 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/26 13:49:17 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/26 14:03:25 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	ft_get_number(const char *str, int sign)
 {
-	int	result;
+	int		result;
 	char	*s;
 
 	result = 0;
