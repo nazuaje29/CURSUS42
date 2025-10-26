@@ -4,7 +4,7 @@
 #include <limits.h>
 #include <string.h>
 
-/*
+
 static char ft_change_char(unsigned int i, char c)
 {
     if (i % 2 == 0)
@@ -19,11 +19,11 @@ void    ft_change_str(unsigned int i, char *str)
     if (!str || !*str)
         return;
     *str = '0';
-}*/
+}
 
 int main(void)
 {
-    /*
+    
     // ft_isalpha y ft_isdigit y ft_isalnum
     printf("ft_isalpha('a'): %d\n", ft_isalpha('a'));
     printf("ft_isalpha('1'): %d\n", ft_isalpha('1'));
@@ -132,19 +132,28 @@ int main(void)
         printf("ft_strnstr: %s\n", substr);
 
     // ft_atoi
-    printf("ft_atoi(\"INT MAX\"): %d\n", ft_atoi("2147483648"));
+    printf("ft_atoi(\"INT MAX\"): %d\n", ft_atoi("INT_MAX"));
+    printf("ft_atoi(\"INT MAX\")2: %d\n", atoi("INT_MAX"));
     char *ptr_atoi = NULL;
     printf("ft_atoi(\"NULL\"): %d\n", ft_atoi(ptr_atoi));
-    printf("ft_atoi(\"INT_MIN\"): %d\n", ft_atoi("-2147483648"));
+    printf("ft_atoi(\"INT_MIN\"): %d\n", ft_atoi("INT_MIN"));
+    printf("ft_atoi(\"INT_MIN\")2: %d\n", atoi("INT_MIN"));
     printf("ft_atoi(\"546:5\"): %d\n", ft_atoi("546:5"));
     printf("ft_atoi(\"\\e475\"): %d\n", ft_atoi("\e475"));
-    printf("ft_atoi(\"+\\t\\v\\f\\r\\n \\f1234\"): %d\n", ft_atoi("+\t\v\f\r\n \f1234"));
-    printf("ft_atoi(\"+\\t\\v\\f\\r\\n \\f1234\")2: %d\n", atoi("+\t\v\f\r\n \f1234"));
+    printf("ft_atoi(\"\\t\\v\\f\\r\\n \\f1234\"): %d\n", ft_atoi("\t\v\f\r\n \f1234"));
+    printf("ft_atoi(\"\\t\\v\\f\\r\\n \\f1234\")2: %d\n", atoi("\t\v\f\r\n \f1234"));
     printf("ft_atoi(\"\\t\\n\\r\\v\\fd469 \\n\"): %d\n", ft_atoi("\t\n\r\v\fd69 \n"));
+    printf("ft_atoi(\"\\t\\n\\r\\v\\fd469 \\n\")2: %d\n", atoi("\t\n\r\v\fd69 \n"));
     printf("ft_atoi(\"-+45\"): %d\n", ft_atoi("-+45"));
     printf("ft_atoi(\"-45\"): %d\n", ft_atoi("-45"));
     printf("ft_atoi(\"+45\"): %d\n", ft_atoi("+45"));
     printf("ft_atoi(\"void*0\"): %d\n", ft_atoi(((void*)0)));
+    char *ptr_atoi2 = "2147483647";
+    char *ptr_atoi3 = "-2147483648";
+    printf("ft_atoi: %d\n", ft_atoi(ptr_atoi2));
+    printf("atoi: %d\n", atoi(ptr_atoi2));
+    printf("ft_atoi: %d\n", ft_atoi(ptr_atoi3));
+    printf("atoi: %d\n", atoi(ptr_atoi3));
 
     // ft_calloc
     int *arr = (int *)ft_calloc(5, sizeof(int));
@@ -242,7 +251,6 @@ int main(void)
     ft_putnbr_fd(n_fd,1);
     ft_putchar_fd('\n',1);
     
-    */
 
     t_list  *lst = NULL;
     t_list  *node1;
