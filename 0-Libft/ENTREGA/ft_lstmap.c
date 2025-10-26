@@ -6,13 +6,13 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:15:25 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/25 20:12:37 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/10/26 13:37:19 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_new_content(t_list *lst, t_list *new_lst, void *(*f)(void *),\
+void	*ft_new_content(t_list *lst, t_list *new_lst, void *(*f)(void *), \
 	void (*del)(void *))
 {
 	void	*new_content;
