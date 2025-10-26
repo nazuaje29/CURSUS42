@@ -12,6 +12,10 @@ SRCS = main.c
 
 OBJS = $(SRCS:.c=.o)
 
+SRCS_BONUS = main_bonus.c
+
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
 all: $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT)
@@ -19,6 +23,9 @@ $(NAME): $(OBJS) $(LIBFT)
 
 %.o: %.c $(INCDIR)/libft.h | 
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+
+bonus: $(OBJS_BONUS)
+	$(CC) $(CFLAGS) -I$(INCDIR) $(OBJS_BONUS) $(LIBFT) -o main_bonus
 
 clean:
 	rm -f $(OBJS)
