@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/25 15:50:16 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/25 18:43:14 by nazuaje-         ###   ########.fr       */
+/*   Created: 2025/10/27 18:53:30 by nazuaje-          #+#    #+#             */
+/*   Updated: 2025/11/09 20:44:03 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*temp;
+/* INCLUDES */
+# include <stdarg.h>
+# include <limits.h>
+# include "libft/libft.h"
 
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		temp = (*lst)->next;
-		del((*lst)->content);
-		free(*lst);
-		*lst = temp;
-	}
-	*lst = NULL;
-}
+/* FUNCTIONS */
+int	ft_printf(char const *s, ...);
+int	ft_print_nbr_unsigned(va_list *arg);
+int	ft_print_nbr(va_list *arg);
+int	ft_print_ptr(va_list *arg);
+int	ft_print_hexa(va_list *arg, char const *s);
+
+#endif

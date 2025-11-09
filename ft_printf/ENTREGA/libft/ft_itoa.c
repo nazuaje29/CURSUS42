@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/18 09:35:04 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/10/26 18:49:56 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/11/09 17:55:27 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ size_t	ft_len_nbr(unsigned int n)
 	return (len_nbr);
 }
 
-static void	ft_check_negative(int *is_neg, size_t *len_nbr, int n, unsigned \
+static void	ft_check_negative(int *is_neg, size_t *len_nbr, int n, unsigned\
 	int *nbr)
 {
 	if (n < 0)
