@@ -4,7 +4,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = libftprintf.a
 
-SRCS = ft_printf.c
+SRCS = ft_printf.c ft_putnbr_base_unsigned.c ft_putnbr_unsigned_fd.c
 
 OBJS = $(SRCS:.c=.o)
 
