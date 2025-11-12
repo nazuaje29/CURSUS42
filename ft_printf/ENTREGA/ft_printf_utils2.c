@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 08:28:54 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/11/09 20:44:07 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/11/12 17:27:09 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_print_hexa(va_list *arg, char const *s)
 	count = 0;
 	if (*s == 'x')
 		base = "0123456789abcdef";
-	else if (*s == 'X')
+	if (*s == 'X')
 		base = "0123456789ABCDEF";
 	nbr = va_arg(*arg, unsigned int);
 	count += ft_putnbr_base_unsigned(nbr, base);
