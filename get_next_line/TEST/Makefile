@@ -1,14 +1,13 @@
-CC = cc
+CC = gcc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 NAME = main.out
 NAME_LIB = get_next_line.a
 
 SRCDIR = ../ENTREGA
-OBJDIR = obj
 SRCS = $(wildcard $(SRCDIR)/*.c)
-OBJS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SRCS))
+OBJS = $(patsubst $(SRCDIR)/%.c,%.o,$(SRCS))
 
 SRC_MAIN = main.c
 OBJ_MAIN = main.o
@@ -19,13 +18,13 @@ LIBFT = get_next_line.a
 
 all: $(NAME)
 
-$(NAME): $(LIBFT)
+$(NAME): $(LIBFT) $(OBJS)
 	$(CC) $(CFLAGS) $(SRC_MAIN) $(LIBFT) 
 
 $(LIBFT): $(OBJS)
 	ar rcs $(NAME_LIB) $(OBJS)
 
-$(OBJDIR)/%.o: $(SRCDIR)/%.c $(INCDIR)/get_next_line.h
+%.o: $(SRCDIR)/%.c $(INCDIR)/get_next_line.h
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 clean:

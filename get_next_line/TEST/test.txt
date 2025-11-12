@@ -1,7 +1,14 @@
-LINEA 1
-LINEA 2
-LINEA 3
+a
+b
+f
+r
+hg
+g
+ss
+df
+gs
 
-LINEA 5
 
-LINEA 8
+
+fd
+sdf

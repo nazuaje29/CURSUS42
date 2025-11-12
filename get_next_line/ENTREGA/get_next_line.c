@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:36:16 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/11/10 09:28:08 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/11/12 19:57:24 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,13 @@ char	*get_next_line(int fd)
 
 	i = 0;
 	buffer_len = 0;
+	bytes = 0;
 	if (fd < 0)
 		return (NULL);
-	buffer = malloc( sizeof(char*));
+	buffer = malloc( BUFFER_SIZE * sizeof(char));
 	if (!buffer)
-		return (NULL);	
-	temp = malloc( sizeof(char*));
+		return (NULL);
+	temp = malloc( BUFFER_SIZE * sizeof(char));
 	if (!temp)
 		return (NULL);
 	bytes = read(fd, buffer, BUFFER_SIZE);
@@ -36,13 +37,14 @@ char	*get_next_line(int fd)
 		return (NULL);
 	if (bytes == 0)
 		return (NULL);
-	while (i <= (size_t)bytes)
+	while (i < (size_t)bytes)
 	{
 		if (buffer[i] == '\n')
+		{
 			return (buffer);
+		}
 		i++;
 	}
-	buffer[i] = '\0';
 	while (bytes > 0)
 	{
 		buffer_len += bytes;
@@ -50,14 +52,17 @@ char	*get_next_line(int fd)
 		if (bytes == -1)
 			return (NULL);
 		j = 0;
-		while (j <= (size_t)bytes)
+		while (j < (size_t)bytes)
 		{
 			if (temp[j] == '\n')
-				j = bytes;
+			{
+				ft_strlcat(buffer, temp, (buffer_len));
+				return (buffer);
+			}
 			j++;
 		}
-		temp[j] = '\0';
-		ft_strlcat(buffer, temp, (buffer_len + j));		
+		ft_strlcat(buffer, temp, (buffer_len));
+		free(temp);	
 	}
 	return (buffer);
 }
