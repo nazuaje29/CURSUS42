@@ -1,14 +1,3 @@
-a
-b
-f
-r
-hg
-g
-ss
-df
-gs
-
-
-
-fd
-sdf
+linea 1
+linea 2
+linea 3

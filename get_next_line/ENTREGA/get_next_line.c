@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:36:16 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/11/12 19:57:24 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/11/13 20:21:20 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,46 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
-	char		*temp;
+	static char	*residual;
+	char		*content;
+	char		*buffer;
+	char		*new_line;
 	int			bytes;
 	size_t		i;
-	size_t		j;
-	size_t		buffer_len;
 
 	i = 0;
-	buffer_len = 0;
-	bytes = 0;
+	bytes = 1;
+	content = "";
 	if (fd < 0)
 		return (NULL);
-	buffer = malloc( BUFFER_SIZE * sizeof(char));
+	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-	temp = malloc( BUFFER_SIZE * sizeof(char));
-	if (!temp)
-		return (NULL);
-	bytes = read(fd, buffer, BUFFER_SIZE);
-	if (bytes == -1)
-		return (NULL);
-	if (bytes == 0)
-		return (NULL);
-	while (i < (size_t)bytes)
+	while (ft_strchr(residual,'\n') != NULL && bytes != 0)
 	{
-		if (buffer[i] == '\n')
-		{
-			return (buffer);
-		}
-		i++;
-	}
-	while (bytes > 0)
-	{
-		buffer_len += bytes;
-		bytes = read(fd, temp, BUFFER_SIZE);
+		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
-			return (NULL);
-		j = 0;
-		while (j < (size_t)bytes)
 		{
-			if (temp[j] == '\n')
-			{
-				ft_strlcat(buffer, temp, (buffer_len));
-				return (buffer);
-			}
-			j++;
+			free(buffer);
+			return (NULL);
 		}
-		ft_strlcat(buffer, temp, (buffer_len));
-		free(temp);	
+		buffer[bytes] = '\0';
+		content = ft_strjoin(content, buffer);
+		if (!content)
+		{
+			free(buffer);
+			return (NULL);
+		}	
 	}
-	return (buffer);
+	while (content[i] && content[i] != '\n')
+		i++;
+	new_line = ft_substr(content, 0, i);
+	if (!new_line)
+		return (NULL);
+	residual = ft_substr(content, i, ft_strlen(content) - i);
+	if (!residual)
+	{	
+		return (NULL);
+	}
+	return(new_line);
 }

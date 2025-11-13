@@ -19,7 +19,7 @@ LIBFT = get_next_line.a
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(SRC_MAIN) $(LIBFT) 
+	$(CC) $(CFLAGS) $(SRC_MAIN) $(LIBFT) -o $(NAME)
 
 $(LIBFT): $(OBJS)
 	ar rcs $(NAME_LIB) $(OBJS)
@@ -29,6 +29,7 @@ $(LIBFT): $(OBJS)
 
 clean:
 	rm -f $(OBJS)
+	rm -f $(LIBFT)
 
 fclean: clean
 	rm -f $(NAME)
