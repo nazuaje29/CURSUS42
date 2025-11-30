@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:36:28 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/11/13 20:02:31 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/11/30 11:36:22 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ char	*ft_strchr(const char *s, int c)
 {
 	char	*str;
 
+	if(!s)
+		return (NULL);
 	str = (char *)s;
 	while (*str)
 	{

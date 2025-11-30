@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:36:16 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/11/13 20:21:20 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/11/30 11:36:28 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,57 @@
 
 char	*get_next_line(int fd)
 {
-	static char	*residual;
-	char		*content;
-	char		*buffer;
-	char		*new_line;
-	int			bytes;
-	size_t		i;
+	static char		*residual;
+	char			*temp;
+	char			buffer[BUFFER_SIZE + 1];
+	char			*new_line;
+	int				bytes;
+	size_t			i;
 
 	i = 0;
 	bytes = 1;
-	content = "";
-	if (fd < 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buffer)
-		return (NULL);
-	while (ft_strchr(residual,'\n') != NULL && bytes != 0)
+	if (residual == NULL)
+    {
+        residual = malloc(1);
+        residual[0] = '\0';
+    }
+	while (!ft_strchr(residual,'\n') && bytes != 0)
 	{
 		bytes = read(fd, buffer, BUFFER_SIZE);
 		if (bytes == -1)
 		{
-			free(buffer);
+			free(residual);
+			residual = NULL;
 			return (NULL);
 		}
 		buffer[bytes] = '\0';
-		content = ft_strjoin(content, buffer);
-		if (!content)
-		{
-			free(buffer);
+		temp = residual;
+		residual = ft_strjoin(residual, buffer);
+		free(temp);
+		if (!residual)
 			return (NULL);
-		}	
 	}
-	while (content[i] && content[i] != '\n')
+	if (!residual || residual[0] == '\0')
+	{
+		if (residual)
+			free(residual);
+		residual = NULL;
+		return (NULL);
+	}
+	while (residual[i] && residual[i] != '\n')
 		i++;
-	new_line = ft_substr(content, 0, i);
+	if (residual[i] == '\n')
+		i++;
+	new_line = ft_substr(residual, 0, i);
 	if (!new_line)
 		return (NULL);
-	residual = ft_substr(content, i, ft_strlen(content) - i);
-	if (!residual)
-	{	
-		return (NULL);
-	}
+	temp = residual;
+	if (residual[i])
+		residual = ft_substr(temp, i, ft_strlen(temp) - i);
+	else
+		residual = NULL;
+	free(temp);
 	return(new_line);
 }
