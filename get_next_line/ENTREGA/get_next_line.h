@@ -6,7 +6,7 @@
 /*   By: nazuaje- <nazuaje-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/10 07:36:38 by nazuaje-          #+#    #+#             */
-/*   Updated: 2025/11/13 19:57:15 by nazuaje-         ###   ########.fr       */
+/*   Updated: 2025/12/01 20:25:24 by nazuaje-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4
+#  define BUFFER_SIZE 10000000
 # endif
 
 /* INCLUDES */
@@ -24,7 +24,6 @@
 
 /* FUNCTIONS */
 char	*get_next_line(int fd);
-size_t	ft_strlcat(char *dst, const char *src, size_t dsize);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_substr(char const *s, unsigned int start, size_t len);

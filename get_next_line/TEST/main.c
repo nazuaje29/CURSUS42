@@ -16,5 +16,8 @@ int main(void)
         free(line);
     }
     close(fd);
+
+
+
     return (0);
 }
